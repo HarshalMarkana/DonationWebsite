@@ -21,7 +21,7 @@ const app = express();
 intilizePassport(passPort,email=> User.findOne({ email: email }))
 
 Mongoose
-    .connect("mongodb+srv://Harshal:llPmzE04AYHG9RQR@cluster0.u6hbb.mongodb.net/DonationWebsite?retryWrites=true&w=majority")
+    .connect(process.env.DBURI)
     .then(() => {
 		const PORT = process.env.PORT || 3000;
 		app.listen(PORT, console.log("Server Started"));
