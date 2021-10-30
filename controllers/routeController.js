@@ -68,17 +68,18 @@ router.post("/signup",(req,res)=>{
 })
 
 
-router.post('/user/login',(req,res,next)=>{
-    passport.authenticate("local",(err,user)=>{
+router.post('/users/login',(req,res,next)=>{
+	//console.log(req.body);
+    passport.authenticate("user",(err,user)=>{
         if (err) {
 			res.send(err);
 			return;
 		}
-		console.log(user)
+		//console.log(user)
 
 		if (!user) {
 			req.flash('error_msg','Enter valid login credentials');
-            console.log('set he')
+            console.log('set nai he')
 			res.redirect("/login");
 			return;
 		}
@@ -99,6 +100,21 @@ router.post('/user/login',(req,res,next)=>{
 		});
 	})(req, res, next);
 })
+
+router.get("/users/logout", (req, res) => {
+	if(req.cookies && req.cookies.hasOwnProperty("token")) {
+		res.cookie("token","",{expires: new Date(0)});
+	}
+	req.flash('success_msg','Logged out successfully');
+	res.redirect("/");
+})
+
+
+
+router.get('/apply')
+{
+
+}
 
 
 module.exports = router;

@@ -11,6 +11,8 @@ const passPort = require('passport')
 const flash =  require('connect-flash');
 const jwt = require("jsonwebtoken");
 const userController = require('./controllers/userController');
+const cookieParser = require("cookie-parser");
+
 
 const intilizePassport = require('./config/passport');
 const User = require('./models/Users');
@@ -18,8 +20,7 @@ const User = require('./models/Users');
 
 const app = express(); 
 
-intilizePassport(passPort,email=> User.findOne({ email: email }))
-
+ 
 Mongoose
     .connect(process.env.DBURI)
     .then(() => {
@@ -46,10 +47,14 @@ app.use(session({
 
 app.use(passPort.initialize())
 app.use(passPort.session())
+app.use(cookieParser());
+require("./config/passport")(passPort);
+
+
 app.use("/",routeController)
 
 app.use(
-	"/user",
+	"/user",passPort.authenticate("jwt_user",{session:false}),
 	userController
 );
 

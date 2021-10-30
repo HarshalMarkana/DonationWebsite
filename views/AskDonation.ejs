@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AskDonation</title>
+</head>
+<body>
+    <form action="/user/submitDonation/<%=user._id%>" method="post">
+    <label for="email">Email</label>
+    <input type="email" name="email" placeholder="<%=user.email%>"><br>
+    <label for="name">Name</label>
+    <input type="text" name="name" placeholder="<%=user.name%>"><br>
+    <label for="contact">contact</label>
+    <input type="text" name="contact" placeholder="10 digit number"><br>
+    <label for="target">target</label>
+    <input type="number" name="target" placeholder="How much"><br>
+    <button>Apply</button>
+    </form>
+</body>
+</html>

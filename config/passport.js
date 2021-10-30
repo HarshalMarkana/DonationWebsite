@@ -13,12 +13,12 @@ require("dotenv").config();
 
 
 
-function userStrategy(Email, password, done) {
+function userStrategy(email, password, done) {
 	// Match User
-	console.log(Email);
-	User.findOne({ email: Email })
+	//console.log(email);
+	User.findOne({ email: email })
 		.then((user) => {
-			console.log(user)
+			//console.log(user)
 			if (!user) {
 				console.log("not there")
 				return done(null, false, { message: "Email not registered" });
@@ -45,7 +45,7 @@ function userStrategy(Email, password, done) {
 }
 
 
-function initialize(passport)
+module.exports = function(passport)
 {
     passport.serializeUser(function(user,done)
     {
@@ -59,6 +59,7 @@ function initialize(passport)
 
 	var usercookieExtractor = function (req) {
 		var token = null;
+		//console.log(req)
 		if (req) {
 			token = req.cookies.token;
 		}
@@ -79,7 +80,7 @@ function initialize(passport)
 		  });
 	}
 
-    passport.use("local",new LocalStrategy({ usernameField: "email" }, userStrategy)
+    passport.use("user",new LocalStrategy({ usernameField: "email" }, userStrategy)
 	);    
 
 	passport.use(
@@ -93,6 +94,4 @@ function initialize(passport)
 			userjwtCallback
 		)
 	);
-}
-
-module.exports = initialize;
+};
