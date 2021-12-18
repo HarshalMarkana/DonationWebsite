@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SignIn</title>
+</head>
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+
+<body>
+
+<div id="back">
+  <!--<div class="backRight"></div>-->
+  <div class="backLeft"></div>
+  <div class="centered">Happiness comes from what we give</div>
+</div>
+
+<div id="slideBox">
+  <div class="topLayer">
+    <div class="right">
+      <div class="content">
+        <h2>Welcome! <br>Sign In Here</h2>
+        <form action="/users/login" method="post"   name="form1" id="form1" class="form1">
+          <div class="form-group">
+            <label for="Email" >Email</label>&nbsp;
+            <input type="email" name="email"autofocus="true" id="email" class="email" placeholder="Enter your username">
+
+            <span id="errormail"></span>
+            <br>
+            <label for="password">Password</label>&nbsp;&nbsp;
+            <input type="password"name="password" id="Password" placeholder="Enter your password">
+            <br>
+            <span id="errorpswd"></span>
+          </div>
+          <br><button id="login" type="submit" class="login">Login</button>
+          <br>&nbsp;&nbsp;&nbsp;&nbsp;<label>OR</label>
+          <!-- Add here code of sign in with google -->
+          <div class="google-btn" id="gbtn">
+		
+            <div class="google-icon-wrapper">
+              
+              <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+            </div>
+            <p class="btn-text"><a id="googlebutton" href="/auth/google" class="btn red darken-1"><b>Sign in with google</b></a></p>
+            <br><br><a href="/signup">New User? Signup here</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="script.js"></script>
+
+</body>
+</html>
+
+

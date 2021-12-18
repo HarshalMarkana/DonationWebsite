@@ -1,0 +1,249 @@
+<html>
+<head>
+<title>Update Profile</title>
+
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<link href="/assets/css/updateprofile.css" rel="stylesheet">
+<link href="/assets/css/changepswd.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins"
+	rel="stylesheet">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="/assets/css/plugins/social-buttons.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="/assets/css/smartech.css" rel="stylesheet">
+<!-- Custom Fonts -->
+<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
+	type="text/css">
+<link href="/assets/css/bootstrap.css" rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body style="font-family: Helvetica Neue, Helvetica, Arial, sans-serif;">
+	
+	<br>
+	<br>
+	<div id="popup1" class="overlay">
+
+		<div class="popup">
+			<a class="close" href="#" style="background-color: #55068A">&times;</a>
+			<div id="dialog" class="window">
+
+				<div class="box">
+					<div class="newletter-title">
+						<h2 style="color: #55068A;">Change your password</h2>
+					</div>
+					<div class="box-content newleter-content">
+
+						<div id="frm_subscribe">
+							<form name="subscribe" id="subscribe_popup" method="post"
+								action="/user/updated/2/<%=user._id%>">
+								<div>
+
+									<input type="password" name="oldpsw" id="oldpsw"
+										placeholder="old password"> <br>
+									<span id="errorold" style="color: red;"> 									
+                                    </span> <br>
+									<input type="password" name="password" id="password" placeholder="new password"><br> <span
+										id="errorpswd" style="color: red;"></span> <br>
+									<input type="password" name="cpassword" id="cpassword"
+										placeholder="confirm password"><br> <span
+										id="errorcpsw" style="color: red;"></span>
+
+									<div id="notification"></div>
+									<br>
+									<input type="submit" onclick="checkJS()" class="button"
+										value="SUBMIT"
+										style="background-color: #fff; color: #55068A; font-weight: bolder; height: 40px; width: 120px;">
+
+								</div>
+							</form>
+
+						</div>
+						<!-- /#frm_subscribe -->
+					</div>
+					<!-- /.box-content -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="main-body">
+			<div class="container" id="show">
+				<div class="row gutters-sm">
+					<div class="col-md-4 mb-3">
+						<div class="card" style="color:#55068A;">
+							<div class="card-body">
+								<div class="d-flex flex-column align-items-center text-center">
+									<br> <img src="/assets/img/user2.png" alt="Admin"
+										class="rounded-circle" width="150">
+									<div class="mt-3">
+										<h4>
+											<%=user.name%>
+										</h4>
+
+										<br>
+										
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<form class="col-lg-8" method="post" action="/user/updated/1/<%=user._id%>"
+						name="update">
+						<div class="card" style="color:#55068A;">
+							<div class="card-body">
+								<div class="row mb-3" style="display: initial;">
+									<div class="col-sm-3">
+										<h5 class="mb-0">First Name</h5>
+									</div>
+									<div class="col-sm-9 text-secondary">
+										<input type="text" name="Name" id="fname"
+											class="form-control" value="<%=user.name%>">
+										<span id="fnm"></span>
+									</div>
+								</div>
+
+								<div class="row mb-3" style="display: initial;">
+									<div class="col-sm-3">
+										<h5 class="mb-0">Last Name</h5>
+									</div>
+									<div class="col-sm-9 text-secondary">
+										<input type="text" name="lname" id="lname"
+											class="form-control" value="<%=user.name%>">
+										<span id="lnm"></span>
+									</div>
+								</div>
+
+								
+								
+								<div class="row mb-3" style="display: initial;">
+									<div class="col-sm-3">
+										<h5 class="mb-0">Mobile</h5>
+									</div>
+									<div class="col-sm-9 text-secondary">
+										<input type="text" name="mobile_no" id="mno" class="form-control"
+											value="<%=user.mobile_no%>"> <span id="mno"></span>
+									</div>
+								</div>
+
+								<a class="btn btn-primary skip" href="#popup1"
+									style="padding: 1px 1px; color: #55068A; background-color: white; border-color: white; font-family: poppins; color: black; margin: 3% 27%; display: inline-block; text-decoration: underline;">change
+									password?</a>
+
+
+								<div class="row" style="display: initial;">
+									<div class="col-sm-3"></div>
+									<div class="col-sm-9 text-secondary">
+										<button type="submit" id="changes" style="background-color:#55068A;"
+											class="btn btn-primary px-4">Save Changes</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+
+				</div>
+				
+
+			</div>
+
+
+		</div>
+	</div>
+	<!-- jQuery Version 1.11.0 -->
+	<script src="/assets/js/jquery-1.11.0.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="/assets/js/bootstrap.min.js"></script>
+
+</body>
+<script src="/assets/js/updateprofile.js"></script>
+<script>
+
+function checkJS()
+{
+	
+	
+					var code=$("#oldpsw").val();
+					var npsw=$("#password").val();
+					var cpsw=$("#cpassword").val();
+					var re = /[0-9]+/;
+					var re2 = /[a-z]+/;
+					var re3 = /[A-Z]+/;
+					
+					 if(code==''){
+						$('#errorold').html('please enter old password');
+						subscribe.oldpsw.focus();
+						return false;
+					}
+					 else
+						{
+							$('#errorold').html('');
+						}
+					 
+					 if(npsw==''){
+							$('#errorpswd').html('please enter new password');
+							subscribe.password.focus();
+							return false;
+						}
+					else if((npsw.length)<8)
+					{
+						$('#errorpswd').html('minimum 8 characters required');
+						subscribe.password.focus();
+						return false;
+					}
+				   	else if(!re.test(npsw)) 
+				  	{
+				   		$('#errorpswd').html('at least one number(0-9) required');
+					        subscribe.password.focus();
+					        return false;
+			    	}
+				      	
+				      	
+				    else if(!re2.test(npsw)) 
+				  	{
+				    	$('#errorpswd').html('at least one lowercase letter(a-z) required');
+				    	subscribe.password.focus();
+					        return false;
+					 }
+				      	
+				    else if(!re3.test(subscribe.password.value)) 
+				  	{
+				    	$('#errorpswd').html('at least one uppercase letter(A-Z) required');
+				    	subscribe.password.focus();
+				        	return false;
+			    	}
+					else
+					{
+						$('#errorpswd').html('');
+					}
+					 
+					if(cpsw=='')
+					{
+						$('#errorcpsw').html('please enter confirm password');
+						subscribe.cpassword.focus();
+						return false;
+					}
+					else if(npsw!=cpsw)
+					{
+						$('#errorcpsw').html("password mismatch");
+						subscribe.cpassword.focus();
+						return false;
+					}
+					else
+					{
+						$('#errorcpsw').html('');
+					}
+					
+
+						
+						 					
+}
+
+</script>
+
+</html>

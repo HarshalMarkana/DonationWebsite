@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Donation Form</title>
+     
+    
+    </head>
+<style type:"css/text">
+
+body{
+    margin: 0;
+    padding: 0;
+font-family: sans-serif;
+background-image:url("/css/1.jpg");
+background-size: cover;
+background-color: #21afde;
+height: 100%;
+background-position: center;
+background-repeat: no-repeat;
+}
+.sign-up-form{
+    width: 300px;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
+    background: white;
+    padding: 20px;
+    margin: 8% auto 5%;
+    text-align: center;
+
+}
+.sign-up-form h1{
+    color:rgba(7, 160, 30, 0.694);
+    padding: 10px;
+    margin: 8% auto 0;
+    text-align: center;
+}
+.input-box{
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    width: 70%;
+    border: 1px solid #999;
+    outline: none;
+}
+button{
+    color: #fff;
+    widows: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 15px;
+    margin: 10px 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.signup-btn{
+    background-color:rgb(16, 139, 0);
+    padding: 10px;
+    width: 80%;
+}
+.gmail-btn{
+    background-color: #21afde;
+    padding: 10px;
+    width: 80%;
+}
+a{
+    text-decoration: none;
+}
+hr{
+    margin-top: 20px;
+}
+.or{
+    background: #fff;
+    width: 30px;
+    margin: -19px auto 10px;
+}
+img{
+    width: 100px;
+    margin-top: -50px;
+    border-style: none;
+    border-radius: 75%;
+}
+</style>
+<body>
+    
+    <div class="sign-up-form">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS9LnhCcE7mcIbLa0btaNCdXRnCjnAP61GFbxH2drG4XvORNeC0">
+        
+<h1>Form for donee</h1>
+<form action="/user/submitDonation/<%=user._id%>" method="post">
+  <input type="text" name="name" class="input-box" placeholder="Your Name">
+  <input type="number" name="target" class="input-box" placeholder="Amount for need">
+  <input type="email" class="input-box" placeholder="Your email ">
+  <input type="text" name="contact" class="input-box" placeholder="Your Phone number">
+  <input type="text" name="reason" class="input-box" placeholder="Reason for need money">
+  <input type="file" accept="image/*" />
+  
+  <p><span><input type="checkbox"></span> I agree to the terms & conditions</p>  
+
+<button type="submit" class="signup-btn">Submit</button>
+
+
+    </div>
+</body>
+</html>

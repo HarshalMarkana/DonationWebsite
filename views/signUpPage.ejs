@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SignUp</title>
+</head>
+<link rel="stylesheet" type="text/css" href="/css/style2.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+
+<body>
+
+<div id="back">
+  <!--<div class="backRight"></div>-->
+  <div class="backLeft"></div>
+  
+</div>
+
+<div id="slideBox">
+  <div class="topLayer">
+    <div class="right">
+      <div class="content">
+        <h2>Register Yourself</h2>
+        <form method="post" action="/signup"  name="form2" id="form2" class="form2">
+          <div class="form-group">
+            
+            <label for="name" >Name</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" name="Name" autofocus="true" id="name" class="name" placeholder="Enter your name"><br>
+            <span id="errorname"></span>
+            <br>
+
+            <label for="mobile" >Mobile</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" name="mobile_no" id="mobile" class="mobile" placeholder="Enter your Phone number"><br>
+            <span id="errormobile"></span>
+            <br>
+
+            <label for="email" >EmailID</label>&nbsp;&nbsp;&nbsp;
+            <input type="text" name="Email" id="Email" class="Email" placeholder="Enter your EmailID">
+            <br>
+            <span id="errormail"></span>
+            <br>
+            
+            <label for="password">Password</label>&nbsp;&nbsp;
+            <input type="password" name="password" id="Password" placeholder="Enter your password">
+            <br>
+            <span id="pswerror"></span><br>
+
+            <label for="cpassword">Confirm <br>Password</label>&nbsp;&nbsp;
+            <input type="password" name="password2" id="cpsw" class="cpsw" placeholder="Re-write your password">
+            <br>
+            <span id="errorcpsw"></span><br>
+
+          </div>
+           
+          <br><button id="signup" type="submit" class="signup">Submit</button>
+         
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script  >
+  $(document).ready(function()
+{
+  
+  $("#signup").click(function()
+  {
+    
+    var name=$("#name").val();
+    var re = /[0-9]+/;
+    var re2 = /[a-z]+/;
+    var re3 = /[A-Z]+/;
+    if(name==''){
+        $('#errorname').html('please enter name');
+        form2.name.focus();
+        return false;
+    }
+    var re4 = /^[a-zA-Z ]*$/;
+    if(!re4.test(name)) 
+    {
+      $('#errorname').html('Name must contain only letters');
+          form2.name.focus();
+          return false;
+    }
+    else
+    {
+      $('#errorname').html('');
+    }
+
+
+    var mno=$("#mobile").val();
+    if(mno==''){
+      $('#errormobile').html('pls enter mobile number');
+      form2.mobile.focus();
+      return false;
+    }
+    else if(isNaN(mno)) 
+    {
+      $('#errormobile').html('Phone number only contain numbers');
+          form2.mobile.focus();
+          return false;
+    }
+
+    else if(mno.length < 10 || mno.length > 10)
+    {
+      $('#errormobile').html('please enter 10 digits');
+      form2.mobile.focus();
+      return false;
+    }
+    
+    else
+    {
+      $('#errormobile').html('');
+    }
+
+    var email=$("#Email").val();
+    var psw=$("#Password").val();
+    
+    if(email==''){
+      $('#errormail').html('please enter username');
+      form2.Email.focus();
+      return false;
+    }
+
+    else if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)))
+    {
+      $('#errormail').html('please enter valid email id');
+      form2.Email.focus();
+      return false;
+    }
+    
+    
+    else
+    {
+      $('#errormail').html('');
+    }
+    
+    
+     if(psw==''){
+        $('#pswerror').html('please enter password');
+        form2.Password.focus();
+        return false;
+      }
+     
+   
+    
+    else if((psw.length)<8)
+    {
+      $('#pswerror').html('minimum 8 characters');
+      form2.Password.focus();
+      return false;
+    }
+     
+          
+    else if(!re2.test(psw)) 
+    {
+        $('#pswerror').html('password must contain atleast 1 lowercase letter (a-z)!');
+         form2.Password.focus();
+            return false;
+     }
+          
+          
+      else if(!re3.test(form2.Password.value)) 
+      {
+        $('#pswerror').html('password must contain atleast 1 uppercase letter (A-Z)!');
+         form2.Password.focus();
+            return false;
+      }
+     
+     
+    else
+    {
+      $('#pswerror').html('');
+    }
+
+    var cpsw=$("#cpsw").val();
+
+    if(cpsw=='')
+    {
+      $('#errorcpsw').html('pls enter confirm password');
+      form2.cpsw.focus();
+      return false;
+    }
+    
+    else if(!(psw).match(cpsw))
+    {
+      $('#errorcpsw').html("password doesn't match");
+      form2.cpsw.focus();
+      return false;
+    }
+    else
+    {
+      $('#errorcpsw').html('');
+    }
+
+        
+  });
+    
+});
+    
+  
+
+</script>
+
+</body>
+</html>

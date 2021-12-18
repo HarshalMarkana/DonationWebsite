@@ -1,0 +1,32 @@
+<head>
+  <title>Donations</title>
+  <link rel="stylesheet" href="/css/doneelist.css">
+</head>
+<h1><span class="blue"></span>Current Donation<span class="blue"></span> <span class="yellow"></pan></h1>
+
+<table class="container">
+<thead>
+  <tr>
+    <th><h1>Name</h1></th>
+    <th><h1>Reason</h1></th>
+    <th><h1>Recieved</h1></th>
+    <th><h1>Amount needed</h1></th>
+    <th><h1>Payment</h1></th>
+  </tr>
+</thead>
+<tbody>
+  
+  <% for(var donation of donations) {
+    
+    if(donation.received<=donation.target){
+      %>
+    <tr>
+      <td><%=donation.name%></td>
+      <td><%=donation.reason%></td>
+      <td><%=donation.received%></td>
+      <td><%=donation.target%></td>
+      <td><a href="/payment/<%=donation._id%>"><button class="btn pay">Pay</button></a></td>
+    </tr>
+  <% }} %>  
+</tbody>
+</table>
