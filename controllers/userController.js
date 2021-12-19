@@ -22,7 +22,7 @@ router.get("/:id",async(req,res)=>{
 router.get("/apply/:id",(req,res)=>{
     User.findById(req.params.id)
         .then((user)=>{
-            res.render("Askdonation",{user:user});
+            res.render("AskDonation",{user:user});
         })
         .catch((err)=>console.log(err))
 })
