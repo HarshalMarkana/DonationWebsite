@@ -140,11 +140,7 @@ router.get("/users/logout", (req, res) => {
 	res.redirect("/");
 })
 
-router.get('/donate/:id',(req,res)=>{
-	Donation.findById(req.params.id,function(err,dona){
-		res.render("donate",{donations:dona});
-	});
-})
+ 
 
 router.get("/donations",(req,res)=>{
 	Donation.find({},(err,dona)=>{
@@ -174,7 +170,7 @@ router.post('/donate/:id',(req,res)=>{
 												 .save()
 												.then((donation)=>{
 													 
-													res.redirect(`/donate/${req.params.id}`) 
+													res.redirect(`/donations`) 
 												})
                                         }
                                     })
